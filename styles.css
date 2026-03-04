@@ -1,0 +1,219 @@
+/*
+ * Sales Command Centre Stylesheet
+ *
+ * Provides a dark, modern appearance with green accents. The layout
+ * separates the sheet navigation from the table contents and gives
+ * plenty of breathing room between elements. Tables use sticky
+ * headers for easier scrolling and totals rows are highlighted.
+ */
+
+/* Reset margin and padding */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #121212;
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #1e1e1e;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+header h1 {
+  font-size: 1.6rem;
+  color: #39a67a;
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Style the file input to be hidden and label to act as button */
+.file-label {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  background-color: #2c2c2c;
+  color: #f5f5f5;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.file-label input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+button {
+  background-color: #2c2c2c;
+  color: #f5f5f5;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #39a67a;
+  color: #0d0d0d;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Sidebar containing sheet list */
+.sidebar {
+  width: 240px;
+  background-color: #1c1c1c;
+  padding: 1rem;
+  border-right: 1px solid #2a2a2a;
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #39a67a;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  font-size: 0.9rem;
+}
+
+.sidebar li:hover {
+  background-color: #2a2a2a;
+}
+
+.sidebar li.active {
+  background-color: #39a67a;
+  color: #0d0d0d;
+  font-weight: bold;
+}
+
+/* Table section styling */
+#table-section {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem;
+}
+
+.status {
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: #999999;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  max-height: calc(100vh - 200px);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+thead th {
+  background-color: #222222;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  text-align: left;
+  padding: 0.6rem;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+tbody td {
+  padding: 0.6rem;
+  border-bottom: 1px solid #2a2a2a;
+  vertical-align: top;
+}
+
+tbody tr:hover {
+  background-color: #1e1e1e;
+}
+
+td, th {
+  word-break: break-word;
+}
+
+/* Currency cells right align numbers */
+.currency {
+  text-align: right;
+}
+
+/* Timeline select styling */
+select {
+  width: 100%;
+  padding: 0.3rem;
+  background-color: #2c2c2c;
+  color: #f5f5f5;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+/* Highlight accent cells with subtle green tint */
+.accent-cell {
+  background-color: rgba(57, 166, 122, 0.15);
+  color: #39a67a;
+  font-weight: bold;
+}
+
+/* Totals row styling */
+.totals-row td {
+  background-color: #1a1a1a;
+  font-weight: bold;
+  border-top: 2px solid #39a67a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 180px;
+    font-size: 0.8rem;
+  }
+  thead th, tbody td {
+    padding: 0.5rem;
+  }
+}

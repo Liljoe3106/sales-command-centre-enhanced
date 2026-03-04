@@ -1,219 +1,156 @@
+/* Basic dark glass style for the Sales Command Centre */
 /*
- * Sales Command Centre Stylesheet
- *
- * Provides a dark, modern appearance with green accents. The layout
- * separates the sheet navigation from the table contents and gives
- * plenty of breathing room between elements. Tables use sticky
- * headers for easier scrolling and totals rows are highlighted.
+ * Enhanced dark-mode style for the Sales Command Centre.
+ * The new design introduces higher contrast, more generous spacing,
+ * and subtle shadows to give the dashboard a modern, sleek feel. Rows
+ * are separated for clarity, and interactive elements have clearer
+ * states and improved legibility.
  */
 
-/* Reset margin and padding */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html, body {
-  height: 100%;
+/*
+ * Root CSS variables
+ * Define a green accent color that can be reused throughout the UI.  
+ * This accent subtly brightens certain elements without overpowering
+ * the dark theme. The chosen hue (#1db954) echoes popular SaaS
+ * dashboards and adds life to the interface.
+ */
+:root {
+    --accent-green: #1db954;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #121212;
-  color: #f5f5f5;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    background: #0d0d0d;
+    color: #e0e0e0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
 header {
-  background-color: #1e1e1e;
-  padding: 1rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #2a2a2a;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 header h1 {
-  font-size: 1.6rem;
-  color: #39a67a;
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ffffff;
 }
 
 .controls {
-  display: flex;
-  gap: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
-/* Style the file input to be hidden and label to act as button */
-.file-label {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  background-color: #2c2c2c;
-  color: #f5f5f5;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-.file-label input[type="file"] {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
+input[type="file"],
+select,
+button {
+    padding: 12px 16px;
+    border-radius: 6px;
+    /* Use a faint green border on controls to introduce a hint of colour */
+    border: 1px solid rgba(29, 185, 84, 0.6);
+    background: rgba(30, 30, 30, 0.8);
+    color: #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    font-size: 0.95rem;
 }
 
 button {
-  background-color: #2c2c2c;
-  color: #f5f5f5;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.2s;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 button:hover {
-  background-color: #39a67a;
-  color: #0d0d0d;
-}
-
-.main {
-  flex: 1;
-  display: flex;
-  overflow: hidden;
-}
-
-/* Sidebar containing sheet list */
-.sidebar {
-  width: 240px;
-  background-color: #1c1c1c;
-  padding: 1rem;
-  border-right: 1px solid #2a2a2a;
-  overflow-y: auto;
-}
-
-.sidebar h2 {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  color: #39a67a;
-}
-
-.sidebar ul {
-  list-style: none;
-}
-
-.sidebar li {
-  padding: 0.4rem 0.6rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
-  font-size: 0.9rem;
-}
-
-.sidebar li:hover {
-  background-color: #2a2a2a;
-}
-
-.sidebar li.active {
-  background-color: #39a67a;
-  color: #0d0d0d;
-  font-weight: bold;
-}
-
-/* Table section styling */
-#table-section {
-  flex: 1;
-  overflow: auto;
-  padding: 1rem;
-}
-
-.status {
-  margin-bottom: 1rem;
-  font-size: 0.85rem;
-  color: #999999;
+    /* On hover, make buttons pop with the accent colour */
+    background: rgba(29, 185, 84, 0.8);
+    box-shadow: 0 4px 8px rgba(29, 185, 84, 0.6);
 }
 
 .table-container {
-  width: 100%;
-  overflow-x: auto;
-  max-height: calc(100vh - 200px);
+    margin-top: 20px;
+    overflow-x: auto;
+    border-radius: 12px;
+    background: rgba(20, 20, 20, 0.6);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    padding: 20px;
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.85rem;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
 }
 
-thead th {
-  background-color: #222222;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  text-align: left;
-  padding: 0.6rem;
-  border-bottom: 1px solid #2a2a2a;
+th, td {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.95rem;
 }
 
-tbody td {
-  padding: 0.6rem;
-  border-bottom: 1px solid #2a2a2a;
-  vertical-align: top;
+th {
+    background: rgba(40, 40, 40, 0.8);
+    color: #f2f2f2;
+    font-weight: 600;
+    /* Give table headers a subtle green underline to tie in the accent */
+    border-bottom: 2px solid rgba(29, 185, 84, 0.4);
 }
 
-tbody tr:hover {
-  background-color: #1e1e1e;
+/* Each table row uses a background with rounded corners to visually separate data rows. */
+tr {
+    background: rgba(30, 30, 30, 0.6);
+    border-radius: 6px;
 }
 
-td, th {
-  word-break: break-word;
+tr:hover {
+    background: rgba(60, 60, 60, 0.8);
 }
 
-/* Currency cells right align numbers */
-.currency {
-  text-align: right;
+tr td {
+    /* Remove individual cell borders to create cleaner rows */
+    border-bottom: none;
 }
 
-/* Timeline select styling */
-select {
-  width: 100%;
-  padding: 0.3rem;
-  background-color: #2c2c2c;
-  color: #f5f5f5;
-  border: 1px solid #2a2a2a;
-  border-radius: 4px;
-  font-size: 0.85rem;
-}
-
-/* Highlight accent cells with subtle green tint */
+/* Cells (both th and td) that should be accented, typically the
+ * subtitles on the dashboard such as "Move Deal", "Grow Account",
+ * "Create Opportunity", "Priority Deals", "Value" and "Next Step".
+ * We give these cells the accent green colour and slightly bolder
+ * weight so they stand out from surrounding content. */
 .accent-cell {
-  background-color: rgba(57, 166, 122, 0.15);
-  color: #39a67a;
-  font-weight: bold;
+    color: var(--accent-green);
+    font-weight: 600;
 }
 
-/* Totals row styling */
-.totals-row td {
-  background-color: #1a1a1a;
-  font-weight: bold;
-  border-top: 2px solid #39a67a;
+tr + tr td {
+    border-top: none;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .sidebar {
-    width: 180px;
-    font-size: 0.8rem;
-  }
-  thead th, tbody td {
-    padding: 0.5rem;
-  }
+.status {
+    text-align: center;
+    margin-top: 25px;
+    font-style: italic;
+    color: #888;
+}
+
+/* Style dropdowns used in timeline columns to match the dark theme */
+td select {
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(29, 185, 84, 0.6);
+    background: rgba(30, 30, 30, 0.8);
+    color: #e0e0e0;
+    font-size: 0.95rem;
+}
+td select option {
+    background: #1a1a1a;
+    color: #e0e0e0;
 }

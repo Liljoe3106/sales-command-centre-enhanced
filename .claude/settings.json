@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "sales-manager": {
+      "command": "node",
+      "args": ["src/server.js"],
+      "cwd": "/home/user/sales-command-centre-enhanced"
+    }
+  }
+}

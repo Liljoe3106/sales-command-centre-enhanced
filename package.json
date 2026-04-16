@@ -1,0 +1,18 @@
+{
+  "name": "sales-command-centre",
+  "version": "1.0.0",
+  "description": "Autonomous sales manager MCP server for Claude Code",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "better-sqlite3": "^9.4.3",
+    "dotenv": "^16.4.5",
+    "googleapis": "^140.0.0",
+    "nodemailer": "^6.9.13",
+    "zod": "^3.22.4"
+  }
+}

@@ -18,7 +18,14 @@
             <select id="sheet-select" hidden></select>
             <button id="download-btn" hidden>Download Updated Spreadsheet</button>
         </div>
-        <div id="table-container" class="table-container"></div>
+        <div class="main">
+            <aside id="sheet-sidebar" hidden>
+                <ul id="sheet-list"></ul>
+            </aside>
+            <section id="table-section">
+                <div id="table-container" class="table-container"></div>
+            </section>
+        </div>
         <p id="status" class="status"></p>
     </div>
     <script src="app.js"></script>
